@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studies Weekly</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+        /* Fullscreen Iframe Styles */
+        #content-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        /* Top Button Style */
+        #teacher-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* Hidden Password Panel */
+        #password-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            color: white;
+            z-index: 2000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Hidden Content Area */
+        #hidden-content {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 3000;
+            padding: 50px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        input { padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Fullscreen Iframe -->
+    <iframe id="content-iframe" src="https://www.studiesweekly.com/" allowfullscreen></iframe>
+
+    <!-- 2. Top Button -->
+    <button id="teacher-btn" onclick="showPasswordPanel()">Teacher Help</button>
+
+    <!-- 3. Password Panel -->
+    <div id="password-panel">
+        <h2>Enter Teacher Password</h2>
+        <input type="password" id="password-input" placeholder="Password">
+        <br><br>
+        <button onclick="checkPassword()">Submit</button>
+        <button onclick="hidePasswordPanel()">Cancel</button>
+    </div>
+
+    <!-- 4. Content Page (Initially Hidden) -->
+    <div id="hidden-content">
+        <h1>Operation Overduey</h1>
+        <p>Step one: Use undercover google account that is an “official google account”</p>
+        <p>Step two:  Go the the Ipad during DM&L and share the Google sheet to the undercover google account that holds literally everything.</p>
+        <p>Step three: edit overdue and get paid to change overdue</p>
+        <br>
+        <button onclick="closeHiddenContent()">Close</button>
+    </div>
+
+    <script>
+        function showPasswordPanel() {
+            document.getElementById('password-panel').style.display = 'flex';
+        }
+        function hidePasswordPanel() {
+            document.getElementById('password-panel').style.display = 'none';
+        }
+        function checkPassword() {
+            var pass = document.getElementById('password-input').value;
+            // Password Check (10890)
+            if (pass === "10890") {
+                document.getElementById('password-panel').style.display = 'none';
+                document.getElementById('hidden-content').style.display = 'block';
+                document.getElementById('password-input').value = '';
+            } else {
+                alert("Incorrect Password");
+            }
+        }
+        function closeHiddenContent() {
+            document.getElementById('hidden-content').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
+
